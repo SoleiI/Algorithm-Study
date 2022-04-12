@@ -5,7 +5,7 @@
 import sys
 n, m = map(int, sys.stdin.readline().split())
 square = list(sys.stdin.readline().strip() for _ in range(n))
-maxSize = 0
+maxSize = 1
 
 def isSquare(x, y1, y2):
   length = y2 - y1
@@ -16,9 +16,9 @@ def isSquare(x, y1, y2):
   return 1
 
 for x in range(n):
-  for y1 in range(m):
+  for y1 in range(m-1):
     num = square[x][y1]
-    for y2 in range(m-1, -1, -1):
+    for y2 in range(y1+1, m):
       maxSize = max(maxSize, isSquare(x, y1, y2))
 
 print(maxSize)
